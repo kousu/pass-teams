@@ -6,18 +6,17 @@ Collaborate with your team using [pass(1)](https://passwordstore.org).
 
 `pass teams` expands your `pass` database with GPG keys, managing the addition and removal of team members and distribution of their keys to everyone else on the team. Keys are exposed only to the team, and GPG's awful key verification is streamlined.
 
-
-
-
 ## Why use a password manager at all?
 
 All the usual reasons: it helps you avoid reusing credentials, it makes it less likely your passwords will get stolen, it lets you keep an overview of what services you're subscribed to....
 
 ## But why use a password manager _with a team_?
 
-Better question! Keeping an overview of what services your organization has access to is still a big benefit. But using a password manager likeYour team should _not_ be sharing secrets; rather, where possible, they should be generating tokens (so: one account, multiple credentials, independently revokable) or delegating permissions to individual accounts. Many modern SaaS sites allow you to create a Team (or "Organization" or "Project" or some other noun) and add your organization's members to it. `ssh` lets you put multiple keys under `~/.ssh/authorized_keys` (especially: under `~root/.ssh/authorized_keys`) and they don't all have to be owned by the same person. These delegation methods are far far better than sharing a single personal account with multiple people. If you find yourself putting a lot of passwords into a team password manager, you won't be able to audit who did what, and your apps suck and you should get better ones.
+Better question! Keeping an overview of what services your organization has access to is still a big benefit. But using a password manager likeYour team should _not_ be sharing secrets; rather, where possible, they should be generating tokens (so: one account, multiple credentials, independently revokable) or delegating permissions to individual accounts.
 
-[1password teams](https://1password.com/teams/) and [LastPass teams](https://lastpass.com/teams_trial.php) are making a lot of money off encouraging this bad security practice and we should be very skeptical of it. 
+Many, maybe even most, modern SaaS sites allow you to create a Team (or "Organization" or "Project" or some other noun) and add your organization's members to it. `ssh` lets you put multiple keys under `~/.ssh/authorized_keys` (especially: under `~root/.ssh/authorized_keys`) and they don't all have to be owned by the same person. These delegation methods are far far better than sharing a single personal account with multiple people. If you find yourself putting a lot of passwords into a team password manager, you won't be able to audit who did what, and your apps suck and you should get better ones.
+
+[1password teams](https://1password.com/teams/) and [LastPass teams](https://lastpass.com/teams_trial.php) are making a lot of money off encouraging this outdated security practice and we should be very skeptical of it.
 
 That said. the use cases I've found I can't avoid this is:
 
