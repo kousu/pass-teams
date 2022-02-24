@@ -8,7 +8,7 @@ Collaborate with your team using [pass(1)](https://passwordstore.org).
 
 ## Why use a password manager at all?
 
-All the usual reasons: it helps you avoid reusing credentials, it makes it less likely your passwords will get stolen, it lets you keep an overview of what services you're subscribed to....
+All the usual reasons: it helps you avoid reusing credentials, it makes it less likely your passwords will get stolen, it lets you use your passwords programmatically so you never need to actually look at them or know what they are, it lets you keep an overview of what services you're subscribed to....
 
 ## But why use a password manager _with a team_?
 
