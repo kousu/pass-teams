@@ -1,0 +1,41 @@
+let's think this through, what *should* the UI be
+
+
+
+the parts people struggle with:
+
+1. (init) generating + sharing their own key
+  -> q: should we support people? or should we enforce that they generate a distinct key
+        obviously, with the hindsight of 20 years of practical crypto, they should use a distinct key
+
+  so i need a 'pass team keygen' (maybe 'pass team join'?)
+
+2. (read) authorizing someone else's
+
+  there's a chicken-egg to watch out for here: the first person who creates the team
+2. (write) trusting other people's keys
+  -> pass team is only loaded if someone runs it explicitly, so we'll have to add a command
+  pass team list # maybe this should show *both* people and show which keys are trusted and which are not
+  pass team trust <keyid>
+
+4. canonicalizing the filenames 
+  -> the filename on disk MUST be
+   TODO: does gpg allow special characters?
+   easy fix: just name files by keyids
+   is that okay?
+
+how do i inspect a gpg key without importing it? there's a way but it's a stupid, stupid command
+  
+
+3. seeing who else is on the team
+  -> this is not obvious
+  -> this is also not something I documented in https://github.com/neuropoly/computers/blob/master/docs/pass.md#5-daily-usage
+
+   maybe this is `gpg -k ${TEAM_MEMBERS}`
+   or maybe it's `gpg -k --with-colons ${TEAM_MEMBERS} | awk <...something...>` so that the format is tidier:
+   user <name@email.com> 
+
+pub   rsa3072 2022-12-17 [SC] [expires: 2024-12-16]
+      8983325DA00B50E6F8915E5950F3300EE0F7E812
+uid           [ultimate] lol1
+sub   rsa3072 2022-12-17 [E]

@@ -15,7 +15,35 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+set -euo pipefail
+
 VERSION="0.0"
+
+# a GPG key can be named by its fingerprint, which is a hex string
+# (and used to be able to have spaces, or only be named by a prefix, but those wisely seems to have been removed)
+# or by the fingerprint of one of its subkeys (which gpg just treats as a synonym)
+# or by "user ID", which is a free form string
+# (though which gpg --generate-key insists on writing as "{name} ({comment}) <{email@domain}>")
+#
+# I want to always canonicalize on the top-level fingerprints internally,
+# but be able to display the user ID to help people out
+_gpg_key_name() {
+    C="$(gpg -k --with-colons --batch "${1}")" # gpg why
+    echo $<<<"$C"
+}
+
+cmd_team_join() {
+    local key_id="${1:-}"
+    # TODO: use getopt like pass-otp does
+    if [ -n '${key_id}' ]; then
+        # user passed a GPG ID, try to look it up
+        gpg --list-secret-keys "${key_id}" 2>/dev/null >/dev/null || die "GPG key ${key_id} unavailable."
+    else
+        # key not given, generate one default
+        
+        gpg --batch
+    fi
+}
 
 cmd_team_usage() {
   cat <<-_EOF

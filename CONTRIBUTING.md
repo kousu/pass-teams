@@ -2,6 +2,13 @@
 
 ## Dev Environment
 
+You should set up a test password store
+
+```
+export PASSWORD_STORE_DIR=`pwd`/.password-store
+pass init
+```
+
 The fastest way to get a dev environment up is to install this globally, via symlink:
 
 ```
